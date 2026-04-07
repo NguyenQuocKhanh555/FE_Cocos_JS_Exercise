@@ -1,5 +1,0 @@
-Web app shop quần áo:
-- User: 2 role gồm khách hàng và admin, có đăng nhập, đăng ký
-- Sản phẩm: CRUD cơ bản
-- Giỏ hàng, đơn hàng
-

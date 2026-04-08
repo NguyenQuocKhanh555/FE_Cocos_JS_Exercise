@@ -1,7 +1,21 @@
+import prisma from '../lib/prisma.ts';
+
 export class ProductService {
-    addProduct(name: string, price: number): { id: string; name: string; price: number } {
+    async addProduct(name: string, price: number, description: string, stock: number) {
         // Implement logic to add a new product here
-        return { id: 'new-product-id', name, price }; // Placeholder return value
+        return await prisma.product.create({
+            data: {
+                name,
+                price,
+                description,
+                stock
+            }
+        });
+    }
+
+    /*updateProduct(productId: string, name: string, price: number): { id: string; name: string; price: number } | null {
+        // Implement logic to update product details here
+        return null; // Placeholder return value
     }
 
     updateProduct(productId: string, name: string, price: number): { id: string; name: string; price: number } | null {
@@ -27,5 +41,5 @@ export class ProductService {
     getAllProducts(): { id: string; name: string; price: number }[] {
         // Implement logic to retrieve all products here
         return []; // Placeholder return value
-    }
+    }*/
 }

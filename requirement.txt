@@ -1,0 +1,26 @@
+Xây dựng trang web mua bán quần áo trực tuyến
+Mục tiêu: Cho phép người dùng mua quần áo trực tuyến và quản lý cửa hàng quản lý tình hình kinh doanh của cửa hàng.
+Người dùng: Khách hàng, quản lý
+Các tính năng bao gồm:
+- Đăng nhập, đăng ký tài khoản
+- Xem sản phẩm
+- Tìm kiếm sản phẩm
+- Thêm sản phẩm vào giỏ hàng
+- Đặt hàng
+- Quản lý xuất nhập kho
+- Quản lý doanh thu
+Các hàm xử lý cần có:
+- Xử lý đăng ký cho người dùng
+- Xử lý đăng nhập cho người dùng
+- Hiển thị danh sách cho người dùng xem
+- Xử lý yêu cầu tìm sản phẩm của người dùng
+- Người dùng có thể thêm sản phẩm vào giỏ hàng
+- Người dùng có thể đặt hàng
+- Quản lý có thể thêm, xóa, sửa sản phẩm
+- Quản lý có thể xem báo cáo xuất nhập kho
+- Quản lý có thể xem báo cáo doanh thu của cửa hàng
+Database:
+Sử dụng postgreSQL
+User(id, username, password, role)
+Product(id, name, costprice, sellprice, description, stock)
+

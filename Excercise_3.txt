@@ -1,0 +1,15 @@
+Atlas là một tệp chứa nhiều sprite được đóng gói trong cùng một texture lớn. Đi kèm với nó là một tệp dữ liệu 
+mô tả vị trí, kích thước và cách hiển thị của từng sprite.
+Lợi ích của Atlas:
+- GPU chỉ cần tải một texture duy nhất -> Giảm Draw Calls
+- Giảm chi phí chuyển đổi texture -> Tăng hiệu năng
+- Hạn chế phân mảnh bộ nhớ -> Tiết kiệm bộ nhớ
+- Giảm số lượng tệp cần đọc -> Tăng tốc độ tải
+- Tổ chức sprite một cách khoa học -> Dễ quản lý tài nguyên
+Auto Atlas là tính năng tự động đóng gói các sprite thành một Atlas mà không cần thao tác thủ công trong Cocos Creator. Điều này 
+giúp tối ưu hóa quy trình phát triển và giảm thiểu sai sót.
+Kích thước của atlas phụ thuộc vào giới hạn phần cứng của nền tảng mục tiêu.
+Các giá trị khuyến nghị là 1024 x 1024 cho các thiết bị di động đời cũ, 2048 x 2048 cho thiết bị di động hiện đại, 
+4096 x 4096 cho các smartphone cao cấp và 8192 x 8192 hoặc lớn hơn cho PC và console.
+Các giá trị này đi theo một quy luật chung là lũy thừa của 2, do máy tính hoạt động dựa trên hệ nhị phân nên các giá trị này
+giúp GPU xử lý nhanh và hiệu quả hơn.

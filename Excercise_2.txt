@@ -1,0 +1,23 @@
+Hệ tọa độ đóng vai trò quan trọng trong việc xác định vị trí, chuyển động và tương tác giữa các đối tượng trên màn hình.
+Cocos sử dụng hệ tọa độ Descartes với hai trục chính:
+- Trục X (Horizontal Axis): Chiều ngang, tăng dần từ trái sang phải.
+- Trục Y (Vertical Axis): Chiều dọc, tăng dần từ dưới lên trên.
+Điểm gốc của hệ tọa độ là (0, 0) nằm ở góc dưới bên trái màn hình.
+
+Các Loại Hệ Tọa Độ trong Cocos:
+- Hệ tọa độ thế giới là hệ tọa độ toàn cục, dùng để xác định vị trí của một đối tượng trong toàn bộ scene.
+- Hệ tọa độ cục bộ xác định vị trí của một đối tượng so với node cha của nó. Khi node cha di chuyển, node con cũng di chuyển theo.
+- Hệ tọa độ màn hình liên quan đến vị trí trên màn hình thiết bị, thường được sử dụng trong giao diện người dùng.
+Các phần tử trong Cocos có cấu trúc phân cấp với mối quan hệ cha con. Vị trí được thiết lập bởi node sử dụng hệ tọa độ cục bộ
+thay vì hệ tọa độ thế giới. Nếu node cha là node trên cùng trong scene tree thì hệ tọa độ mà nó dùng là hệ tọa độ thế giới. 
+Khi vẽ ra màn hình, phần hiển thị của Cocos sẽ ánh xạ tọa độ node cục bộ của các phần tử này sang tọa độ của hệ tọa độ thế giới.
+
+Điểm neo là điểm tham chiếu nằm bên trong một node, là vị trí gốc tọa độ của hệ tọa độ cục bộ, được sử dụng làm gốc 
+để xác định vị trí, xoay và co giãn. 
+Sau khi vị trí neo được xác định, tất cả các node con sẽ lấy vị trí neo của node cha làm gốc tọa độ.
+Trong Cocos Creator, vị trí của một node được tính dựa trên điểm neo thay vì góc của hình ảnh.
+Giá trị mặc định của điểm neo là (0.5, 0.5), nằm trong khoảng từ 0 đến 1 và là một hệ số nhân.
+Điểm neo có ảnh hưởng đến một số phép biến đổi:
+- Phép xoay: Node sẽ xoay quanh điểm neo. Do đó thay đổi điểm neo sẽ làm thay đổi cách node xoay.
+- Phép co giãn: Khi co giãn, đối tượng sẽ phóng to hoặc thu nhỏ xung quanh điểm neo. Thay đổi điểm neo có thể làm thay đổi 
+cách node co giãn.

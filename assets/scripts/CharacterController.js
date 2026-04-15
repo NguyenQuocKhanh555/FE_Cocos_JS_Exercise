@@ -1,0 +1,70 @@
+
+cc.Class({
+    extends: cc.Component,
+
+    properties: {
+        speed: 100,
+        mana: 100,
+        maxMana: 100,
+        manaConsumRate: 1,
+        idleTime: 0,
+        regenManaDelay: 2,
+        regenManaRate: 5,
+        isMoving : false,
+        moveDirection: cc.Vec2.ZERO,
+        manaBar: cc.ProgressBar,
+        characterName: "",
+        nameLabel: cc.Label,
+        characterVisual: cc.Node
+    },
+
+    onLoad: function() {
+        this.manaBar.progress = this.mana / this.maxMana;
+        this.nameLabel.string = this.characterName;
+    },
+
+    update: function(deltaTime) {
+        this.move(deltaTime);
+    },
+
+    move: function(deltaTime) {
+        if (this.mana < this.maxMana) {
+            if (this.idleTime >= this.regenManaDelay) {
+                this.mana = Math.min(this.maxMana, this.mana + this.regenManaRate * deltaTime);
+                this.manaBar.progress = this.mana / this.maxMana;
+            } else {
+                this.idleTime += deltaTime;
+            }
+        }
+        
+        if (this.mana <= 0) {
+            this.node.active = false;
+            return;
+        }
+
+        if (!this.isMoving) {
+            return;
+        }
+
+        this.characterVisual.scaleX = this.moveDirection.x === 0 ? 
+            this.characterVisual.scaleX : this.moveDirection.x * Math.abs(this.characterVisual.scaleX);
+
+        let movement = this.moveDirection.mul(this.speed * deltaTime)
+        this.node.position = this.node.position.add(movement);
+        this.mana -= this.manaConsumRate * deltaTime;
+        this.idleTime = 0;
+        this.manaBar.progress = this.mana / this.maxMana;
+    },
+
+    onStartMove: function(moveDirection) {
+        this.isMoving = true;
+        this.characterVisual.getComponent(sp.Skeleton).setAnimation(0, "walk", true);
+        this.moveDirection = moveDirection;
+    },
+
+    onStopMove: function() {
+        this.isMoving = false;
+        this.characterVisual.getComponent(sp.Skeleton).setAnimation(0, "idle", true);
+        this.moveDirection = cc.Vec2.ZERO;  
+    }
+});

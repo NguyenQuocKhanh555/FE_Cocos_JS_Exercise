@@ -28,8 +28,8 @@ Thời điểm gọi:<br>
 🔹 Được gọi khi Component hoặc Node được kích hoạt.<br>
 🔹 Xảy ra sau onLoad().<br>
 🔹 Được gọi mỗi khi:<br>
-    🔸 node.active = true<br>
-    🔸 component.enabled = true
+    <pre>🔸 node.active = true</pre><br>
+    <pre>🔸 component.enabled = true</pre>
 
 Đặc điểm kỹ thuật:<br>
 🔹 Có thể được gọi nhiều lần trong vòng đời.<br>
@@ -93,8 +93,8 @@ Thời điểm gọi: Được gọi sau khi tất cả các update() hoàn tấ
 Thời điểm gọi:<br>
 🔹 Được gọi khi Component hoặc Node bị vô hiệu hóa.<br>
 🔹 Xảy ra khi:<br>
-    🔸 node.active = false<br>
-    🔸 component.enabled = false
+    <pre>🔸 node.active = false</pre><br>
+    <pre>🔸 component.enabled = false</pre>
 
 Đặc điểm kỹ thuật:<br>
 🔹 Có thể được gọi nhiều lần.<br>

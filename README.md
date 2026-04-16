@@ -1,5 +1,5 @@
 ## Lable là gì ?
-Trong Cocos Creator, Label là một component dùng để hiển thị văn bản trong game hoặc ứng dụng. Nó được sử dụng rộng rãi trong các thành phần giao diện người dùng như:
+Trong Cocos Creator, Label là một component dùng để hiển thị văn bản trong game hoặc ứng dụng.
 
 Thường được được sử dụng rộng rãi trong các thành phần giao diện người dùng như: <br>
 🔹 Điểm số (Score)<br>

@@ -28,21 +28,20 @@ cc.Class({
     },
 
     move: function(deltaTime) {
-        if (this.mana < this.maxMana) {
-            if (this.idleTime >= this.regenManaDelay) {
-                this.mana = Math.min(this.maxMana, this.mana + this.regenManaRate * deltaTime);
-                this.manaBar.progress = this.mana / this.maxMana;
-            } else {
-                this.idleTime += deltaTime;
-            }
-        }
-        
         if (this.mana <= 0) {
             this.node.active = false;
             return;
         }
 
         if (!this.isMoving) {
+            if (this.mana < this.maxMana) {
+                if (this.idleTime >= this.regenManaDelay) {
+                    this.mana = Math.min(this.maxMana, this.mana + this.regenManaRate * deltaTime);
+                    this.manaBar.progress = this.mana / this.maxMana;
+                } else {
+                    this.idleTime += deltaTime;
+                }
+            }
             return;
         }
 

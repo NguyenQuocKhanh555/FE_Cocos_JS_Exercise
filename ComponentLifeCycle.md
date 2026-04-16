@@ -64,7 +64,7 @@ Thời điểm gọi:<br>
 &nbsp;&nbsp;&nbsp;🔹 Được gọi ở mỗi khung hình (frame).<br>
 &nbsp;&nbsp;&nbsp;🔹 Chỉ chạy khi Component đang được kích hoạt.<br>
 
-Đặc điểm kỹ thuật:
+Đặc điểm kỹ thuật:<br>
 &nbsp;&nbsp;&nbsp;🔹 dt (deltaTime) là khoảng thời gian giữa hai frame.<br>
 &nbsp;&nbsp;&nbsp;🔹 Tần suất phụ thuộc vào FPS của game.<br>
 &nbsp;&nbsp;&nbsp;🔹 Là một phần của game loop.<br>

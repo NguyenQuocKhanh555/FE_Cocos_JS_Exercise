@@ -8,6 +8,7 @@ cc.Class({
         maxMana: 100,
         manaConsumRate: 1,
         idleTime: 0,
+        deathTime: 0,
         regenManaDelay: 2,
         regenManaRate: 5,
         isMoving : false,
@@ -29,7 +30,11 @@ cc.Class({
 
     move: function(deltaTime) {
         if (this.mana <= 0) {
-            this.node.active = false;
+            if (this.deathTime >= 3) {
+                this.node.active = false;
+            } else {
+                this.deathTime += deltaTime;
+            }
             return;
         }
 
@@ -52,16 +57,23 @@ cc.Class({
         this.node.position = this.node.position.add(movement);
         this.mana -= this.manaConsumRate * deltaTime;
         this.idleTime = 0;
+        if (this.mana <= 0) {
+            this.isMoving = false;
+            this.moveDirection = cc.Vec2.ZERO;
+            this.characterVisual.getComponent(sp.Skeleton).setAnimation(0, "death", true);
+        }
         this.manaBar.progress = this.mana / this.maxMana;
     },
 
     onStartMove: function(moveDirection) {
+        if (this.deathTime > 0) return;
         this.isMoving = true;
         this.characterVisual.getComponent(sp.Skeleton).setAnimation(0, "walk", true);
         this.moveDirection = moveDirection;
     },
 
     onStopMove: function() {
+        if (this.deathTime > 0) return;
         this.isMoving = false;
         this.characterVisual.getComponent(sp.Skeleton).setAnimation(0, "idle", true);
         this.moveDirection = cc.Vec2.ZERO;  
